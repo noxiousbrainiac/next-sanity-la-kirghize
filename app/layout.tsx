@@ -1,5 +1,6 @@
 import React from 'react';
-import { MAGILIO } from '@app/ui/fonts/fonts';
+import { NOTO_SANS } from '@app/ui/fonts/fonts';
+import StoreProvider from '@app/lib/store/StoreProvider';
 import '@app/ui/globals.css';
 
 export default function RootLayout({
@@ -9,8 +10,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={MAGILIO.className}>
-        <main>{children}</main>
+      <body className={NOTO_SANS.className}>
+        <StoreProvider>
+          {children}
+        </StoreProvider>
       </body>
     </html>
   );
