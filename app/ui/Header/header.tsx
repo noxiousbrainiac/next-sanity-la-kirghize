@@ -1,39 +1,63 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { clsx } from 'clsx';
-import Navigation from '@app/ui/navigation/navigation';
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenuToggle,
+  NavbarMenu,
+  NavbarMenuItem,
+} from '@nextui-org/react';
 import { MAGILIO } from '@app/ui/fonts/fonts';
+import { navItems } from '@app/lib/link';
 import styles from './header.module.css';
 
 function Header() {
-  const [position, setPosition] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const moving = window.scrollY;
-
-      setVisible(position > moving);
-      setPosition(moving);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return (() => {
-      window.removeEventListener('scroll', handleScroll);
-    });
-  });
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className={clsx(styles.header, visible ? styles.visible : styles.hidden)}>
-      <div className={styles.container}>
-        <Link href="/" className={clsx(styles.logo, MAGILIO.className)}>
-          La Kirghize
-        </Link>
-        <Navigation />
-      </div>
-    </header>
+    <Navbar
+      shouldHideOnScroll
+      onMenuOpenChange={setIsMenuOpen}
+    >
+      <NavbarContent>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          className="sm:hidden"
+        />
+        <NavbarBrand>
+          <Link href="/" className={`${styles.logo} ${MAGILIO.className}`}>
+            La Kirghize
+          </Link>
+        </NavbarBrand>
+      </NavbarContent>
+
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        {navItems.map((item) => (
+          <NavbarItem key={`nav-item-xl-${item.href}`}>
+            <Link href={item.href}>
+              {item.pathName}
+            </Link>
+          </NavbarItem>
+        ))}
+      </NavbarContent>
+
+      <NavbarMenu>
+        {navItems.map((item) => (
+          <NavbarMenuItem key={`nav-item-xs-${item.href}`}>
+            <Link
+              className="w-full"
+              href={item.href}
+            >
+              {item.pathName}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
+    </Navbar>
   );
 }
 

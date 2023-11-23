@@ -21,11 +21,6 @@ body {
 }
 
 :root {
-  /* screen sizes */
-  --desktop: 1440px;
-  --tablet: 960px;
-  --mobile: 576px;
-
   /* font sizes */
   --head-text: 48px;
   --subtitle-text: 20px;
@@ -33,13 +28,6 @@ body {
 
   /* shadow */
   --shadow: 0 2px 10px 0 rgb(0 0 0 / 15%);
-
-  /* colors */
-  --black: #191818;
-  --blue: rgb(25 103 210);
-  --gray: rgb(95 99 104);
-  --white: #fff;
-  --gray-50: #fafafa;
 }
 
 @media screen and (width <= 576px) {
