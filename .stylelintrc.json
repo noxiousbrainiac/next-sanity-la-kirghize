@@ -1,11 +1,12 @@
-{
+{ 
   "extends": ["stylelint-config-standard"],
   "rules": {
+    "max-empty-lines": 1,
     "at-rule-no-unknown": [
       true,
-      {
-          "ignoreAtRules": ["tailwind"]
-      }
-    ]
+      { "ignoreAtRules": ["tailwind"] }
+    ],
+    "selector-class-pattern": null,
+    "selector-id-pattern":null
   }
 }

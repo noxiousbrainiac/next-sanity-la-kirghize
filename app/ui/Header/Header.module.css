@@ -1,0 +1,43 @@
+.header {
+  position: fixed; 
+  top: 0;
+  width: 100%;
+  padding: 8px 20px;
+  box-shadow: var(--shadow);
+  background-color: var(--white);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: var(--head-text);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.visible {
+  top: 0;
+  transition: top 0.4s ease-out;
+}
+
+.hidden {
+  top: -80px;
+  transition: top 0.4s ease-out;
+}
+
+@media screen and (width <= 576px) {
+  .header {
+    padding: 8px 16px;
+  }
+
+  .container {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+}

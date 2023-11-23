@@ -1,5 +1,5 @@
 import localFont from 'next/font/local';
-import { Noto_Sans } from 'next/font/google';
+import { Noto_Sans, Roboto } from 'next/font/google';
 
 export const MAGILIO = localFont({
   src: './magilio.ttf',
@@ -7,7 +7,14 @@ export const MAGILIO = localFont({
 });
 
 export const NOTO_SANS = Noto_Sans({
-  weight: ['400', '700'],
+  weight: ['400', '500', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+export const ROBOTO = Roboto({
+  weight: ['400', '500', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
