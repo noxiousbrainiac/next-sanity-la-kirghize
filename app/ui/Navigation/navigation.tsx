@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { MouseEventHandler, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
@@ -8,12 +8,14 @@ import { usePathname } from 'next/navigation';
 import { navItems } from '@app/lib/link';
 import { ROBOTO } from '@app/ui/fonts/fonts';
 import { selectIsMobile } from '@app/lib/store/selectors';
-import styles from './Navigation.module.css';
+import styles from './navigation.module.css';
 
 function Navigation() {
   const [checked, setStatus] = useState<boolean>(false);
   const path = usePathname();
   const isMobile = useSelector(selectIsMobile);
+
+  const handleOnClick: MouseEventHandler = () => setStatus((state) => !state);
 
   useEffect(() => {
     if (checked) {
@@ -27,7 +29,7 @@ function Navigation() {
     <nav role="navigation">
       <div className={styles.menuToggle}>
 
-        <input type="checkbox" onClick={() => setStatus((state) => !state)} checked={checked} />
+        <input type="checkbox" onClick={handleOnClick} checked={checked} />
 
         <span />
         <span />
@@ -39,6 +41,7 @@ function Navigation() {
               key={href}
               href={href}
               className={clsx(styles.navItem, ROBOTO.className)}
+              onClick={handleOnClick}
             >
               {pathName}
             </Link>

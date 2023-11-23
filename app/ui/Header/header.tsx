@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { clsx } from 'clsx';
-import Navigation from '@app/ui/Navigation';
+import Navigation from '@app/ui/navigation/navigation';
 import { MAGILIO } from '@app/ui/fonts/fonts';
-import styles from './Header.module.css';
+import styles from './header.module.css';
 
 function Header() {
   const [position, setPosition] = useState(0);

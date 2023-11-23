@@ -132,6 +132,10 @@
 }
 
 @media screen and (width <= 576px) {
+  .nav {
+    display: none;
+  }
+  
   .navItem {
     font-weight: 400;
     border-radius: unset;
