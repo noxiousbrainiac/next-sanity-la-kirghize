@@ -11,14 +11,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={NOTO_SANS.className}>
-        <StoreProvider>
+    <StoreProvider>
+      <html lang="en">
+        <body className={NOTO_SANS.className}>
           <LayoutEffect />
           <Header />
           {children}
-        </StoreProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }

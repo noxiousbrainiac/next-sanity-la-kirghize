@@ -8,7 +8,7 @@ import { MAGILIO } from '@app/ui/fonts/fonts';
 import styles from './Header.module.css';
 
 function Header() {
-  const [position, setPosition] = useState(window.scrollY);
+  const [position, setPosition] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
