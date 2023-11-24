@@ -6,21 +6,26 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
+  ButtonGroup,
   NavbarMenuItem,
+  Button,
 } from '@nextui-org/react';
 import { MAGILIO } from '@app/ui/fonts/fonts';
 import { navItems } from '@app/lib/link';
+import { usePathname } from 'next/navigation';
 import styles from './header.module.css';
 
 function Header() {
+  const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Navbar
+      maxWidth="xl"
       shouldHideOnScroll
+      isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent>
@@ -29,28 +34,41 @@ function Header() {
           className="sm:hidden"
         />
         <NavbarBrand>
-          <Link href="/" className={`${styles.logo} ${MAGILIO.className}`}>
+          <Link
+            href="/"
+            className={`${styles.logo} ${MAGILIO.className}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
             La Kirghize
           </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        {navItems.map((item) => (
-          <NavbarItem key={`nav-item-xl-${item.href}`}>
-            <Link href={item.href}>
+        <ButtonGroup>
+          {navItems.map((item) => (
+            <Button
+              as={Link}
+              href={item.href}
+              key={`nav-item-xl-${item.href}`}
+              isDisabled={path === item.href}
+            >
               {item.pathName}
-            </Link>
-          </NavbarItem>
-        ))}
+            </Button>
+          ))}
+        </ButtonGroup>
       </NavbarContent>
 
-      <NavbarMenu>
+      <NavbarMenu className="gap-0 z-40">
         {navItems.map((item) => (
-          <NavbarMenuItem key={`nav-item-xs-${item.href}`}>
+          <NavbarMenuItem
+            key={`nav-item-xs-${item.href}`}
+            className="py-[10px]"
+          >
             <Link
-              className="w-full"
+              className={styles.navItem}
               href={item.href}
+              onClick={() => setIsMenuOpen(false)}
             >
               {item.pathName}
             </Link>

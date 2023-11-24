@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '@app/ui/header/header';
 import { NOTO_SANS } from '@app/ui/fonts/fonts';
 import Providers from '@app/lib/providers';
 import LayoutEffect from '@app/lib/store/LayoutEffect';
@@ -15,10 +14,7 @@ export default function RootLayout({
       <body className={NOTO_SANS.className}>
         <Providers>
           <LayoutEffect />
-          <Header />
-          <main className="text-foreground bg-background">
-            {children}
-          </main>
+          {children}
         </Providers>
       </body>
     </html>

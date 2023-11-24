@@ -16,12 +16,8 @@ const initialState:PostState = {
 };
 
 export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
-  try {
-    const data = await client.fetch('*[_type == "post"]');
-    return data;
-  } catch (error) {
-    return error;
-  }
+  const data = await client.fetch('*[_type == "post"]{ title, slug, author->, mainImage, publishedAt, body }');
+  return data;
 });
 
 const postSlice = createSlice({
