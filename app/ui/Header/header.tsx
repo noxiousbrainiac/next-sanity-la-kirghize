@@ -24,6 +24,7 @@ function Header() {
   return (
     <Navbar
       maxWidth="xl"
+      isBlurred={false}
       shouldHideOnScroll
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
