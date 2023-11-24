@@ -1,5 +1,6 @@
-import Header from '@app/ui/header/header';
 import React from 'react';
+import Header from '@app/ui/header/header';
+import CustomBreadcrumbs from '@app/ui/custom-breadcrumbs/custom-breadcrumbs';
 
 function PostLayout({
   children,
@@ -9,6 +10,7 @@ function PostLayout({
   return (
     <>
       <Header />
+      <CustomBreadcrumbs />
       <main>
         {children}
       </main>

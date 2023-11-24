@@ -16,7 +16,7 @@ const initialState:PostState = {
 };
 
 export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
-  const data = await client.fetch('*[_type == "post"]{ title, slug, author->, mainImage, publishedAt, body }');
+  const data = await client.fetch('*[_type == "post"]| order(publishedAt desc){ title, slug, author->, mainImage, publishedAt, body }');
   return data;
 });
 

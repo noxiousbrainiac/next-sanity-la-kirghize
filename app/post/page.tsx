@@ -1,6 +1,6 @@
 import React from 'react';
-import { fetchPosts } from '@app/lib/store/features/postSlice';
-import { store } from '@app/lib/store';
+import { fetchPosts } from '@app/store/features/postSlice';
+import { store } from '@app/store';
 import PostsContainer from '@app/ui/containers/posts-container';
 
 async function getData() {

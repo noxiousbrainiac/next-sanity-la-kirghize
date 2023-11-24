@@ -11,7 +11,7 @@ function CustomBreadcrumbs() {
   return (
     <Breadcrumbs
       hideSeparator
-      className="py-6"
+      className="my-6 px-4 max-w-screen-xl mx-auto"
       classNames={{
         list: 'gap-2',
       }}

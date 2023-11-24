@@ -3,7 +3,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { NextUIProvider } from '@nextui-org/react';
-import { store } from '@app/lib/store';
+import { store } from '@app/store';
 import { useRouter } from 'next/navigation';
 
 function Providers({ children }: { children: React.ReactNode }) {

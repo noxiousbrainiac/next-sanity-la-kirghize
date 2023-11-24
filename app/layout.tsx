@@ -1,7 +1,7 @@
 import React from 'react';
 import { NOTO_SANS } from '@app/ui/fonts/fonts';
 import Providers from '@app/lib/providers';
-import LayoutEffect from '@app/lib/store/LayoutEffect';
+import LayoutEffect from '@app/store/LayoutEffect';
 import '@app/ui/globals.css';
 
 export default function RootLayout({

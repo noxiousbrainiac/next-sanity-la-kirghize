@@ -18,7 +18,7 @@ function SanityImage({ image, className, ...rest } : ImageProps) {
         fill
         src={src}
         alt={image.alt}
-        objectFit="cover"
+        className="object-cover"
         {...rest}
       />
     </div>

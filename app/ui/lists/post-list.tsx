@@ -6,7 +6,7 @@ const PostCard = dynamic(() => import('@app/ui/cards/post-card'));
 
 function PostList({ posts }: { posts: IPost[] }) {
   return (
-    <div className="gap-2 grid grid-cols-2 lg:grid-cols-3">
+    <div className="gap-2 grid mobile:grid-cols-2 lg:grid-cols-3">
       {posts.map((post) => (
         <PostCard
           key={`${post.id}`}
