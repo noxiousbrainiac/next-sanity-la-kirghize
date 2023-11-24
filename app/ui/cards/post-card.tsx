@@ -36,19 +36,22 @@ function PostCard({ post }: { post: IPost }) {
       href={`/post/${current}`}
       target="_blank"
     >
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <h5 className="font-bold text-medium md:text-large">
-          {title}
-        </h5>
+      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start flex-grow">
         <small className="text-default-500">
           {date}
         </small>
-        <p className="text-tiny uppercase font-bold">
+        <h4 className="font-bold text-medium md:text-large flex-grow">
+          {title}
+        </h4>
+        <small className="ext-tiny">
           {author.name}
-        </p>
+        </small>
       </CardHeader>
-      <CardBody className="relative overflow-visible py-2">
-        <SanityImage image={mainImage} />
+      <CardBody className="overflow-visible py-2 flex-none">
+        <SanityImage
+          image={mainImage}
+          className="rounded-xl h-[270px]"
+        />
       </CardBody>
     </Card>
   );

@@ -1,26 +1,27 @@
 import React from 'react';
 import NextImage from 'next/image';
-import { Image } from '@nextui-org/react';
 import { urlForImage } from '@sanity/lib/image';
 
 interface ImageProps {
   image: any
+  className: string
 }
 
-function SanityImage({ image, ...rest } : ImageProps) {
+function SanityImage({ image, className, ...rest } : ImageProps) {
   const src = urlForImage(image)
     .format('webp')
     .url();
 
   return (
-    <Image
-      as={NextImage}
-      width={500}
-      height={500}
-      src={src}
-      alt={image.alt}
-      {...rest}
-    />
+    <div className={`relative overflow-hidden ${className}`}>
+      <NextImage
+        fill
+        src={src}
+        alt={image.alt}
+        objectFit="cover"
+        {...rest}
+      />
+    </div>
   );
 }
 
