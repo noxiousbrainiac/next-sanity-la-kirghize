@@ -11,9 +11,7 @@ function PostLayout({
     <>
       <Header />
       <CustomBreadcrumbs />
-      <main>
-        {children}
-      </main>
+      {children}
     </>
   );
 }

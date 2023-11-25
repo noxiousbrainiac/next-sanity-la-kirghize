@@ -12,13 +12,15 @@ function PostsContainer() {
   } = store.getState().post;
 
   return (
-    <div className="mx-auto px-4 max-w-screen-xl">
-      <PostList
-        posts={posts}
-        total={total}
-        page={page}
-      />
-    </div>
+    <main>
+      <div className="mx-auto px-4 max-w-screen-xl">
+        <PostList
+          posts={posts}
+          total={total}
+          page={page}
+        />
+      </div>
+    </main>
   );
 }
 
