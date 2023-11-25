@@ -1,14 +1,12 @@
 import React from 'react';
-import { fetchPosts } from '@app/store/features/postSlice';
+import { fetchPosts } from '@app/store/features/post-slice';
 import { store } from '@app/store';
 import PostsContainer from '@app/ui/containers/posts-container';
 
-async function getData() {
-  await store.dispatch(fetchPosts());
-}
+async function Posts({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
+  const page = typeof searchParams.page === 'string' ? Number(searchParams.page) : 1;
 
-async function Posts() {
-  await getData();
+  await store.dispatch(fetchPosts({ page }));
 
   return <PostsContainer />;
 }

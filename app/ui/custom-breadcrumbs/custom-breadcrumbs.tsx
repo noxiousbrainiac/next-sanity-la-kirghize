@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 function CustomBreadcrumbs() {
   const paths = usePathname();
-  const pathNames = paths.split('/').filter((path) => path);
+  const splitedPaths = paths.split('/').filter((path) => path);
 
   return (
     <Breadcrumbs
@@ -24,9 +24,9 @@ function CustomBreadcrumbs() {
       }}
     >
       <BreadcrumbItem href="/">Home</BreadcrumbItem>
-      {pathNames.map((path, index) => {
-        const href = `/${pathNames.slice(0, index + 1).join('/')}`;
-        const pathTitle = path[0].toUpperCase() + path.slice(1, path.length);
+      {splitedPaths.map((path, index) => {
+        const href = `/${splitedPaths.slice(0, index + 1).join('/')}`;
+        const pathTitle = (path[0].toUpperCase() + path.slice(1, path.length)).split('-').join(' ');
 
         return <BreadcrumbItem key={path} href={href}>{pathTitle}</BreadcrumbItem>;
       })}

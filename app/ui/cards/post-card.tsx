@@ -50,7 +50,7 @@ function PostCard({ post }: { post: IPost }) {
       <CardBody className="overflow-visible py-2 flex-none">
         <SanityImage
           image={mainImage}
-          className="rounded-xl h-[270px]"
+          className="rounded-xl  h-[170px] mobile:h-[220px] tablet:h-[270px]"
         />
       </CardBody>
     </Card>

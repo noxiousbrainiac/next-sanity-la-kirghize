@@ -7,7 +7,7 @@ import {
   setDesktopResolution,
   setMobileResolution,
   setTabletResolution,
-} from '@app/store/features/layoutSlice';
+} from '@app/store/features/layout-slice';
 
 function LayoutEffect() {
   const dispatch = useDispatch();

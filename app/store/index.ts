@@ -3,8 +3,8 @@ import {
   Action,
   ThunkAction,
 } from '@reduxjs/toolkit';
-import postReducer from '@app/store/features/postSlice';
-import layoutReducer from '@app/store/features/layoutSlice';
+import postReducer from '@app/store/features/post-slice';
+import layoutReducer from '@app/store/features/layout-slice';
 
 export const store = configureStore({
   reducer: {
