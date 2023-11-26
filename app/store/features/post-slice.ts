@@ -7,16 +7,14 @@ import { POST_LIST_PAGINATION_LIMIT } from '@app/lib/constants';
 
 interface PostState {
   posts: IPost[]
-  error: any,
-  pending: boolean
+  currentPost: IPost | null,
   total: number,
   page: number,
 }
 
 const initialState:PostState = {
   posts: [],
-  error: null,
-  pending: false,
+  currentPost: null,
   total: 0,
   page: 1,
 };
@@ -32,7 +30,7 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async ({
   const count = await client.fetch(groq`count(*[_type == "post"])`);
   const data = await client.fetch(groq`
     *[_type == "post"]| order(publishedAt desc)[$start...$end]{
-      title, slug, author->, mainImage, publishedAt
+      _id, title, slug, author->, mainImage, publishedAt
     }
   `, {
     start,
@@ -48,31 +46,49 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async ({
   };
 });
 
+export const fetchPost = createAsyncThunk('post/fetchPost', async ({
+  slug,
+} : {
+  slug: string,
+}) => {
+  const data = await client.fetch(groq`
+    *[_type == "post" && slug.current == $slug][0] {
+      _id, title, slug, author->, mainImage, publishedAt, body
+    }
+  `, { slug });
+
+  return data;
+});
+
 const postSlice = createSlice({
   name: 'post',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchPosts.pending, (state) => {
-      state.pending = true;
-    });
-    builder.addCase(fetchPosts.fulfilled, (
-      state,
-      action: PayloadAction<{
-        data: IPost[],
-        total: number,
-        page: number
-      }>,
-    ) => {
-      state.pending = false;
-      state.posts = action.payload.data;
-      state.total = action.payload.total;
-      state.page = action.payload.page;
-    });
-    builder.addCase(fetchPosts.rejected, (state, action) => {
-      state.pending = false;
-      state.error = action.payload;
-    });
+    builder.addCase(
+      fetchPosts.fulfilled,
+      (
+        state,
+        action: PayloadAction<{
+          data: IPost[],
+          total: number,
+          page: number
+        }>,
+      ) => {
+        state.posts = action.payload.data;
+        state.total = action.payload.total;
+        state.page = action.payload.page;
+      },
+    );
+    builder.addCase(
+      fetchPost.fulfilled,
+      (
+        state,
+        action: PayloadAction<IPost>,
+      ) => {
+        state.currentPost = action.payload;
+      },
+    );
   },
 });
 

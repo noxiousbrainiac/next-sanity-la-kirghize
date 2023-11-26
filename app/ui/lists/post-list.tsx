@@ -23,7 +23,7 @@ function PostList({
   return (
     <>
       <div className="gap-2 grid mobile:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
+        {!!posts.length && posts.map((post) => (
           <PostCard
             key={`${post.id}`}
             post={post}
@@ -31,16 +31,18 @@ function PostList({
         ))}
       </div>
       <div className="flex justify-center">
-        <Pagination
-          isCompact
-          showControls
-          showShadow
-          total={total}
-          initialPage={page}
-          isDisabled={total <= POST_LIST_PAGINATION_LIMIT}
-          className="mt-6"
-          onChange={(current) => router.push(`post/?page=${Math.floor(current)}`)}
-        />
+        {!!posts.length && (
+          <Pagination
+            isCompact
+            showControls
+            showShadow
+            total={total}
+            initialPage={page}
+            isDisabled={total <= POST_LIST_PAGINATION_LIMIT}
+            className="mt-6"
+            onChange={(current) => router.push(`post/?page=${Math.floor(current)}`)}
+          />
+        )}
       </div>
     </>
   );

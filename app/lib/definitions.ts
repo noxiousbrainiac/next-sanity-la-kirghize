@@ -8,5 +8,5 @@ export interface IPost {
   author: any,
   slug: Slug,
   publishedAt: string,
-  body: [],
+  body: any[],
 }
