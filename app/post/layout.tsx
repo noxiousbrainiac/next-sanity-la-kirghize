@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '@app/ui/header/header';
 import CustomBreadcrumbs from '@app/ui/custom-breadcrumbs/custom-breadcrumbs';
+import Header from '@app/ui/app-header/app-header';
 
 function PostLayout({
   children,

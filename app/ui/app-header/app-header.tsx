@@ -17,7 +17,7 @@ import { navItems } from '@app/lib/link';
 import { usePathname } from 'next/navigation';
 import styles from './header.module.css';
 
-function Header() {
+function AppHeader() {
   const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -81,4 +81,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default AppHeader;
