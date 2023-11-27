@@ -35,7 +35,7 @@ function Header() {
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           className="sm:hidden"
         />
-        <NavbarBrand>
+        <NavbarBrand className="justify-end mobile:justify-start">
           <Link
             href="/"
             className={`${styles.logo} ${MAGILIO.className}`}

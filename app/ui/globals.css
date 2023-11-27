@@ -23,7 +23,7 @@ body {
 
 :root {
   /* font sizes */
-  --head-text: 48px;
+  --head-text: 42px;
   --subtitle-text: 20px;
   --normal-text: 16px;
 
@@ -33,6 +33,6 @@ body {
 
 @media screen and (width <= 576px) {
   :root {
-    --head-text: 28px;
+    --head-text: 32px;
   }
 }

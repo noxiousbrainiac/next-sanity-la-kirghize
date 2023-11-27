@@ -9,6 +9,7 @@ import {
 } from '@nextui-org/react';
 import { IPost } from '@app/lib/definitions';
 import SanityImage from '@app/ui/sanity-image/sanity-image';
+import { formatDate } from '@app/lib/helpers';
 
 function PostCard({ post }: { post: IPost }) {
   const {
@@ -19,14 +20,7 @@ function PostCard({ post }: { post: IPost }) {
     slug: { current },
   } = post;
 
-  const dateObject = new Date(publishedAt);
-  const options: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
-
-  const date:string = dateObject.toLocaleDateString('en-US', options);
+  const date = formatDate(publishedAt);
 
   return (
     <Card
@@ -48,10 +42,13 @@ function PostCard({ post }: { post: IPost }) {
         </small>
       </CardHeader>
       <CardBody className="overflow-visible py-2 flex-none">
-        <SanityImage
-          image={mainImage}
-          className="rounded-xl  h-[170px] mobile:h-[220px] tablet:h-[270px]"
-        />
+        <div className="overflow-hidden rounded-xl relative h-[220px] mobile:h-[250px] tablet:h-[270px]">
+          <SanityImage
+            fill
+            image={mainImage}
+            objectFit="cover"
+          />
+        </div>
       </CardBody>
     </Card>
   );

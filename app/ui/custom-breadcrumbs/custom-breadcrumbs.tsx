@@ -13,13 +13,14 @@ function CustomBreadcrumbs() {
       hideSeparator
       className="my-6 px-4 max-w-screen-xl mx-auto"
       classNames={{
-        list: 'gap-2',
+        list: 'gap-2 flex-nowrap items-start',
       }}
       itemClasses={{
         item: [
           'px-2 py-0.5 border-small border-default-400 rounded-small',
           'data-[current=true]:border-default-800 data-[current=true]:bg-foreground data-[current=true]:text-background transition-colors',
           'data-[disabled=true]:border-default-400 data-[disabled=true]:bg-default-100',
+          'data-[slot=item]:whitespace-normal',
         ],
       }}
     >
@@ -28,7 +29,7 @@ function CustomBreadcrumbs() {
         const href = `/${splitedPaths.slice(0, index + 1).join('/')}`;
         const pathTitle = (path[0].toUpperCase() + path.slice(1, path.length)).split('-').join(' ');
 
-        return <BreadcrumbItem key={path} href={href}>{pathTitle}</BreadcrumbItem>;
+        return <BreadcrumbItem key={path} className="whitespace-normal" href={href}>{pathTitle}</BreadcrumbItem>;
       })}
     </Breadcrumbs>
   );

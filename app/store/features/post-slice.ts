@@ -7,7 +7,7 @@ import { POST_LIST_PAGINATION_LIMIT } from '@app/lib/constants';
 
 interface PostState {
   posts: IPost[]
-  currentPost: IPost | null,
+  currentPost: IPost | any,
   total: number,
   page: number,
 }
@@ -35,6 +35,10 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async ({
   `, {
     start,
     end,
+  }, {
+    next: {
+      revalidate: 3600,
+    },
   });
 
   const total = count / POST_LIST_PAGINATION_LIMIT;
@@ -55,7 +59,11 @@ export const fetchPost = createAsyncThunk('post/fetchPost', async ({
     *[_type == "post" && slug.current == $slug][0] {
       _id, title, slug, author->, mainImage, publishedAt, body
     }
-  `, { slug });
+  `, { slug }, {
+    next: {
+      revalidate: 3600,
+    },
+  });
 
   return data;
 });
