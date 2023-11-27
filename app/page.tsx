@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './ui/header/header';
+import Header from '@app/ui/header/header';
 
 export default async function Home() {
   return (
