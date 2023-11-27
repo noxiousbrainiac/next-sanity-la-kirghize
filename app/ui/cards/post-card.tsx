@@ -46,7 +46,7 @@ function PostCard({ post }: { post: IPost }) {
           <SanityImage
             fill
             image={mainImage}
-            objectFit="cover"
+            className="object-cover"
           />
         </div>
       </CardBody>
